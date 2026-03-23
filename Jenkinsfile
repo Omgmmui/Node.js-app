@@ -1,10 +1,14 @@
 pipeline {
   agent any
 
+  tools {
+    nodejs 'nodejs'
+  }
+
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/Omgmmui/Node.js-app.git'
+        git branch: 'main', url: 'https://github.com/Omgmmui/Node.js-app.git'
       }
     }
 
@@ -14,7 +18,7 @@ pipeline {
       }
     }
 
-    stage('Run App Test') {
+    stage('Run App') {
       steps {
         bat 'node app.js'
       }
